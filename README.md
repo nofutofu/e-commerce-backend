@@ -1,4 +1,4 @@
-<h1 align="center">E-Commerce Backendr</h1>
+<h1 align="center">E-Commerce Backend</h1>
 
 <p align="center">E-Commerce backend tested through Insomnia<project-description></p>
 
