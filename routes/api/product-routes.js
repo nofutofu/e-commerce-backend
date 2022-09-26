@@ -11,17 +11,15 @@ router.get('/', async (req, res) => {
       include: [
         {
           model: Category,
-          attributes: ['category_name'],
+          attributes: ['id', 'category_name'],
         },
         {
           model: Tag,
-          attributes: ['tag_name'],
+          attributes: ['id', 'tag_name'],
         },
       ],
     });
 
-
-    // NEED TO DO SOMETHING ELSE HERE I BELIEVE TO MANIPULATE THE FOUND DATA
     res.status(200).json(productData);
 
   } catch (err) {
@@ -37,17 +35,20 @@ router.get('/:id', async (req, res) => {
     include: [
       {
         model: Category,
-        attributes: ['category_name'],
+        attributes: ['id', 'category_name'],
       },
       {
         model: Tag,
-        attributes: ['tag-name'],
+        attributes: ['id', 'tag_name'],
       },
     ],
   });
 
+  if(!productData) {
+    res.status(404).json({message: 'Product by this id does not exist'});
+    return;
+}
 
-  // NEED TO DO SOMETHING ELSE HERE I BELIEVE TO MANIPULATE THE FOUND DATA
   res.status(200).json(productData);
 
 } catch (err) {
