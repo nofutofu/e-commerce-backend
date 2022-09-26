@@ -36,6 +36,11 @@ router.get('/:id', async (req, res) => {
       ],
     });
 
+    if (!tagData) {
+      res.status(404).json({ message: 'Tag by this id does not exist' });
+      return;
+    }
+
     res.status(200).json(tagData);
 
   } catch (err) {
@@ -70,6 +75,11 @@ router.put('/:id', async (req, res) => {
       }
     });
 
+    if (!updatedTag) {
+      res.status(404).json({ message: 'Tag by this id does not exist' });
+      return;
+    }
+
     res.status(200).json(updatedTag)
 
   } catch (err) {
@@ -88,6 +98,7 @@ router.delete('/:id', async (req, res) => {
     
     if (!tagData) {
       res.status(404).json({ message: 'Tag by this id does not exist' });
+      return;
     }
 
     res.status(200).json(tagData);
